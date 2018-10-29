@@ -5,7 +5,17 @@ session_start();
 
 if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
 
-  print_r($_POST);
+  $data = $_POST;
+  $data['billingDate'] = date("Y-m-d H:i:s");
+  $data['bankReference'] = 'T123123321321';
+  $data['bankAuth'] = '321456';
+  $data['currency'] = 'MYR';
+  $amount = str_replace(',', '', number_format($_POST['amount'], 2));
+  $amount = str_replace('.', '', $amount);
+  $data['paymentStatus'] = 'Success';
+  $data['errorDesc'] = '';
+
+  print_r($data);
 
   // open response page.
   include('responsePage.php');
@@ -61,9 +71,7 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
 
     $amount = str_replace(',', '', number_format($_POST['amount'], 2));
     $amount = str_replace('.', '', $amount);
-    $signData = $amount.''.$_POST['merchantId'].''.$_POST['reference'];
-    echo $signData;
-    $data['signature'] = md5($signData);
+    $data['signature'] = md5($amount.''.$_POST['merchantId'].''.$_POST['reference']);
 
     // print_r($data); die();
 
