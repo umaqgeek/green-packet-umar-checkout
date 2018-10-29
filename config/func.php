@@ -40,6 +40,7 @@ function addTransactions($data) {
   );
   $amount = str_replace(',', '', number_format($data['amount'], 2));
   $amount = str_replace('.', '', $amount);
+  $creditCardInfo = $data['credit-card-no'].'<br />'.$data['name'].'<br />'.$data['banks'];
   $merchant = getMerchant($data['merchantId']);
   if ($merchant !== null) {
     $sql = sprintf("INSERT INTO transactions(tr_datetime, m_id, tr_reference,
@@ -52,7 +53,7 @@ function addTransactions($data) {
       $data['reference'],
       $data['bankReference'],
       $data['bankAuth'],
-      $data['credit-card-no'],
+      $creditCardInfo,
       $data['paymentOption'],
       $amount,
       $data['currency'],
