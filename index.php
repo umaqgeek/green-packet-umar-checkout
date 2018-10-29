@@ -5,6 +5,8 @@ session_start();
 
 if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
 
+  print_r($_POST);
+
   // open response page.
   include('responsePage.php');
 
