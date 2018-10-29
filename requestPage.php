@@ -14,9 +14,9 @@
          <div class="col-sm-2"><strong>Net Charges</strong></div>
          <div class="col-sm-10">MYR <?=$data['amount']; ?></div>
          <div class="col-sm-2"><strong>Pay To</strong></div>
-         <div class="col-sm-10">{{merchantName}}</div>
+         <div class="col-sm-10"><?=$data['merchant']['m_email']; ?></div>
          <div class="col-sm-2"><strong>Reference ID</strong></div>
-         <div class="col-sm-10">{{refId}}</div>
+         <div class="col-sm-10"><?=$data['reference']; ?></div>
 
          <div class="col-sm-12"><hr /></div>
 
@@ -39,7 +39,7 @@
          </div>
 
          <div class="col-sm-12">
-           <center class="alert-danger">Timeout: {{timeOut}}</center>
+           <center class="alert-danger">Timeout: <span id="timeOut"></span></center>
            <br />
          </div>
          <div class="col-sm-2"><strong>Name</strong></div>

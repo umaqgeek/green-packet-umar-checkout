@@ -9,3 +9,11 @@ $('#cbxAuth').click(function () {
       $("#btnProceed").removeAttr('disabled');
   }
 });
+
+var initTime = 420;
+function timeOut() {
+  $("#timeOut").html(initTime);
+  setTimeout("timeOut()", 1000);
+}
+
+timeOut();

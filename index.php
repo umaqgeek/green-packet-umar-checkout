@@ -44,10 +44,10 @@ if ($errStats) {
 
   // validation for reference
   if (isReferenceExist($_POST['reference'])) {
-    die("Reference already exist");
+    die("Reference already success paid");
   }
 
-  print_r($data); die();
+  // print_r($data); die();
 
   // open request page.
   include('requestPage.php');
