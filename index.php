@@ -3,27 +3,20 @@ session_start();
 
 $data = $_POST;
 
-$allowedParams = [
-  ['amount', true],
-  ['merchantId', true],
-  ['reference', true],
-  ['remark', false]
-];
+$allowedParams = array(
+  array('amount', true),
+  array('merchantId', true),
+  array('reference', true),
+  array('remark', false)
+);
 
-$errStatus = false;
+$errStats = false;
 if (!empty($data)) {
-  foreach ($data as $key => $val) {
-    foreach ($allowedParams as $d) {
-      if ($key != $d[0]) {
-        $errStats = true;
-        break;
-      }
-      if ($d[1] === true && empty($val)) {
-        $errStats = true;
-        break;
-      }
+  foreach ($allowedParams as $val) {
+    if (!array_key_exists($val[0], $data)) {
+      $errStats = true;
+      break;
     }
-    if ($errStats) break;
   }
 } else {
   $errStats = true;
