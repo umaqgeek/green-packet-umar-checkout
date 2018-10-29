@@ -96,6 +96,9 @@
          <div class="col-sm-12">
            <label id="lblAuth">
              <input type="checkbox" name="cbxAuth" id="cbxAuth" /> &nbsp; I authorize Green Packet to debit the above net charges from my credit card.
+             <input type="hidden" name="amount" value="<?=$data['amount']; ?>" />
+             <input type="hidden" name="merchantId" value="<?=$data['merchantId']; ?>" />
+             <input type="hidden" name="reference" value="<?=$data['reference']; ?>" />
              <input type="hidden" name="signature" value="<?=$data['signature']; ?>" />
              <input type="hidden" name="pendingRequest" value="1" />
            </label>

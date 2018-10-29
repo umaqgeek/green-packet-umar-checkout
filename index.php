@@ -5,7 +5,8 @@ session_start();
 
 if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
 
-  print_r($_POST); die();
+  // open response page.
+  include('responsePage.php');
 
 } else if (isset($_POST['timeOutRequest']) && !empty($_POST['timeOutRequest'])) {
 
