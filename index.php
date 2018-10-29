@@ -13,8 +13,6 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
   $amount = str_replace(',', '', number_format($_POST['amount'], 2));
   $amount = str_replace('.', '', $amount);
 
-  print_r($data); die();
-
   $addStatus = addTransactions($data);
 
   // open response page.
