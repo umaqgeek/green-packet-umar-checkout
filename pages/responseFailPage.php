@@ -4,14 +4,14 @@
   <span class=""></span> <strong>Summary of Payment</strong>
   <hr />
 </div>
-<div class="col-sm-3"><strong>Status</strong></div>
-<div class="col-sm-9"><strong class="total"><?=$data['paymentStatus']; ?></strong></div>
-<div class="col-sm-3"><strong>Billing Date</strong></div>
-<div class="col-sm-9"><?=$data['billingDate']; ?></div>
-<div class="col-sm-3"><strong>Bank Transaction No.</strong></div>
-<div class="col-sm-9"><?=$data['bankReference']; ?></div>
-<div class="col-sm-3"><strong>Reference No.</strong></div>
-<div class="col-sm-9"><?=$data['reference']; ?></div>
+<div class="col-sm-4"><strong>Status</strong></div>
+<div class="col-sm-8"><strong class="total"><?=$data['paymentStatus']; ?></strong></div>
+<div class="col-sm-4"><strong>Billing Date</strong></div>
+<div class="col-sm-8"><?=$data['billingDate']; ?></div>
+<div class="col-sm-4"><strong>Bank Transaction No.</strong></div>
+<div class="col-sm-8"><?=$data['bankReference']; ?></div>
+<div class="col-sm-4"><strong>Reference No.</strong></div>
+<div class="col-sm-8"><?=$data['reference']; ?></div>
 
 <div class="col-sm-12">
   <hr />
