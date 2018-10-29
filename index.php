@@ -25,16 +25,29 @@ if (!empty($_POST)) {
 
 // set error if there are invalid params.
 if ($errStats) {
-  echo "Invalid request.";
+  die("Invalid request");
 } else {
 
   $data = $_POST;
-  $data['amount'] = is_numeric($_POST['amount']) ? number_format($_POST['amount'], 2) : 0.00;
-  $isValidMerchant = isValidMerchant($data['merchantId']);
-  $data['isValidMerchant'] = $isValidMerchant;
+  $data['amount'] = is_numeric($_POST['amount']) && $_POST['amount'] > 0 ? number_format($_POST['amount'], 2) : 0.00;
 
-  print_r($data);
-  die();
+  // validation for amount
+  if ($_POST['amount'] <= 0) {
+    die("Invalid amount");
+  }
+
+  // validation for merchant Id (combination of id and salt in merchant's table)
+  if (isValidMerchant($_POST['merchantId']) == false) {
+    die("Invalid merchant Id");
+  }
+  $data['merchant'] = getMerchant($_POST['merchantId']);
+
+  // validation for reference
+  if (isReferenceExist($_POST['reference'])) {
+    die("Reference already exist");
+  }
+
+  print_r($data); die();
 
   // open request page.
   include('requestPage.php');

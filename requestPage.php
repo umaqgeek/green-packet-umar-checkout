@@ -12,13 +12,11 @@
            <hr />
          </div>
          <div class="col-sm-2"><strong>Net Charges</strong></div>
-         <div class="col-sm-10">MYR {{amount}}</div>
+         <div class="col-sm-10">MYR <?=$data['amount']; ?></div>
          <div class="col-sm-2"><strong>Pay To</strong></div>
          <div class="col-sm-10">{{merchantName}}</div>
          <div class="col-sm-2"><strong>Reference ID</strong></div>
          <div class="col-sm-10">{{refId}}</div>
-         <div class="col-sm-2"><strong>Payment of</strong></div>
-         <div class="col-sm-10">{{prodDesc}}</div>
 
          <div class="col-sm-12"><hr /></div>
 
