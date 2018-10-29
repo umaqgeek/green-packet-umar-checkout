@@ -61,7 +61,9 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
 
     $amount = str_replace(',', '', number_format($_POST['amount'], 2));
     $amount = str_replace('.', '', $amount);
-    $data['signature'] = md5($amount.''.$_POST['merchantId'].''.$_POST['reference']);
+    $signData = $amount.''.$_POST['merchantId'].''.$_POST['reference'];
+    echo $signData;
+    $data['signature'] = md5($signData);
 
     // print_r($data); die();
 
