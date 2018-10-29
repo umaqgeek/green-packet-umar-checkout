@@ -4,7 +4,7 @@ require("dbconnect.php");
 function isValidMerchant($merchantId) {
   $status = false;
 
-  $sql = sprintf("SELECT m.m_id FROM merchants m WHERE MD5(CONCAT(m.m_id, m.m_salt)) = '$s'", $merchantId);
+  $sql = sprintf("SELECT m.m_id FROM merchants m WHERE MD5(CONCAT(m.m_id, m.m_salt)) = '%s'", $merchantId);
   echo $sql;
 
   $result = $GLOBALS['conn']->query($sql);
