@@ -8,7 +8,7 @@
    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
  </head>
    <body>
-     <div class="col-sm-12" style="margin-top: 2%; margin-bottom: 5%;">
+     <div class="col-sm-8 col-sm-offset-2" style="margin-top: 2%; margin-bottom: 5%;">
 
        <form>
 

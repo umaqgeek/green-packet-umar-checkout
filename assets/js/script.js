@@ -10,9 +10,16 @@ $('#cbxAuth').click(function () {
   }
 });
 
-var initTime = 420;
+function secToTime(seconds) {
+  var min = Math.floor((sec - (hours*3600)) / 60);
+  var seconds = Math.floor(sec % 60);
+  return min + ':' + seconds;
+}
+
+var time = 420;
 function timeOut() {
-  $("#timeOut").html(initTime);
+  time -= 1;
+  $("#timeOut").html(secToTime(time));
   setTimeout("timeOut()", 1000);
 }
 
