@@ -1,5 +1,5 @@
 <?php
-require("func.php");
+require("config/func.php");
 // starts session.
 session_start();
 
@@ -13,10 +13,19 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
   $amount = str_replace(',', '', number_format($_POST['amount'], 2));
   $amount = str_replace('.', '', $amount);
   $data['paymentStatus'] = 'Success';
-  $data['errorDesc'] = '';
+
+  print_r($data); die();
+
+  $addStatus = addTransactions($data);
 
   // open response page.
-  include('responsePage.php');
+  if ($addStatus['status']) {
+    $data['errorDesc'] = '';
+    include('pages/responseSuccessPage.php');
+  } else {
+    $data['errorDesc'] = $addStatus['desc'];
+    include('pages/responseFailPage.php');
+  }
 
 } else if (isset($_POST['timeOutRequest']) && !empty($_POST['timeOutRequest'])) {
 
@@ -71,9 +80,7 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
     $amount = str_replace('.', '', $amount);
     $data['signature'] = md5($amount.''.$_POST['merchantId'].''.$_POST['reference']);
 
-    // print_r($data); die();
-
     // open request page.
-    include('requestPage.php');
+    include('pages/requestPage.php');
   }
 }
