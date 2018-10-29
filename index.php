@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$data = $_REQUEST;
+$data = $_POST;
 
 $allowedParams = [
   ['amount', true],
@@ -24,6 +24,10 @@ foreach ($data as $key => $val) {
   }
   if ($errStats) break;
 }
+
+print_r($data);
+echo $errStats;
+die();
 
 unset($_SESSION['errMsg']);
 if ($errStats) {
