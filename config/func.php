@@ -67,7 +67,8 @@ function addTransactions($data) {
       $status['desc'] = '';
     } else {
       $status['status'] = false;
-      $status['desc'] = 'Error: '.$GLOBALS['conn']->error;
+      if (strpos($GLOBALS['conn']->error, 'Duplicate entry') !== false)
+      $status['desc'] = 'Reference already paid';
     }
   } else {
     $status['status'] = false;

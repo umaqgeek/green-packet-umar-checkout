@@ -12,15 +12,16 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
   $data['currency'] = 'MYR';
   $amount = str_replace(',', '', number_format($_POST['amount'], 2));
   $amount = str_replace('.', '', $amount);
-  $data['paymentStatus'] = 'Success';
 
   $addStatus = addTransactions($data);
 
   // open response page.
   if ($addStatus['status']) {
+    $data['paymentStatus'] = 'Success';
     $data['errorDesc'] = '';
     include('pages/responseSuccessPage.php');
   } else {
+    $data['paymentStatus'] = 'Fail';
     $data['errorDesc'] = $addStatus['desc'];
     include('pages/responseFailPage.php');
   }
@@ -71,7 +72,7 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
 
     // validation for reference
     if (isReferenceExist($_POST['reference'])) {
-      die("Reference already success paid");
+      die("Reference already paid");
     }
 
     $amount = str_replace(',', '', number_format($_POST['amount'], 2));
