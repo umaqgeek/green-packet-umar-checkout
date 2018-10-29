@@ -30,6 +30,6 @@ if ($errStats) {
   $_SESSION['errMsg'] = $errStats;
 }
 
-header("Location: index.php");
+header("Location: requestPage.php");
 
 ?>
