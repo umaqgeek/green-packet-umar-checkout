@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION['errMsg'])) {
-  die("<script>alert('Invalid request!');</script>");
-}
-?>
 <html>
  <head>
    <link href="assets/images/favicon.png" rel="icon">
