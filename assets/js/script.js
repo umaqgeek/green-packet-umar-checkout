@@ -11,8 +11,9 @@ $('#cbxAuth').click(function () {
 });
 
 function secToTime(seconds) {
-  var min = Math.floor((sec - (hours*3600)) / 60);
-  var seconds = Math.floor(sec % 60);
+  var hours = Math.floor(seconds / 3600);
+  var min = Math.floor((seconds - (hours * 3600)) / 60);
+  var seconds = Math.floor(seconds % 60);
   return min + ':' + seconds;
 }
 
