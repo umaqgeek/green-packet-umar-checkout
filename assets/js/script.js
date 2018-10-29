@@ -21,6 +21,7 @@ var time = 5;
 function timeOut() {
   if (time <= 0) {
     $("#formTimeOut").submit();
+    return;
   }
   time -= 1;
   $("#timeOut").html(secToTime(time));
