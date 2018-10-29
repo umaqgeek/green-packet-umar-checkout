@@ -35,17 +35,42 @@ function getMerchant($merchantId) {
 
 function addTransactions($data) {
   $status = array(
-    'status' => false,
+    'status' => true,
     'desc' => ''
   );
+  $amount = str_replace(',', '', number_format($data['amount'], 2));
+  $amount = str_replace('.', '', $amount);
   $merchant = getMerchant($data['merchantId']);
-  $sql = sprintf("INSERT INTO transactions(tr_datetime, m_id, tr_reference,
-    tr_transaction_id, tr_auth_code, tr_credit_card_info, tr_payment_method,
-    tr_amount, tr_currency, tr_discount, tr_prod_desc, tr_status,
-    tr_error_desc) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',
-    '%s', '%s', '%s', '%s')",
-    $data['billingDate'],
-    $data['']
-  );
+  if ($merchant !== null) {
+    $sql = sprintf("INSERT INTO transactions(tr_datetime, m_id, tr_reference,
+      tr_transaction_id, tr_auth_code, tr_credit_card_info, tr_payment_method,
+      tr_amount, tr_currency, tr_discount, tr_prod_desc, tr_status,
+      tr_error_desc) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',
+      '%s', '%s', '%s', '%s')",
+      $data['billingDate'],
+      $merchant['m_id'],
+      $data['reference'],
+      $data['bankReference'],
+      $data['bankAuth'],
+      $data['credit-card-no'],
+      $data['paymentOption'],
+      $amount,
+      $data['currency'],
+      "",
+      "",
+      $data['paymentStatus'],
+      $data['errorDesc']
+    );
+    if ($GLOBALS['conn']->query($sql) === TRUE) {
+      $status['status'] = true;
+      $status['desc'] = '';
+    } else {
+      $status['status'] = false;
+      $status['desc'] = 'Error: '.$GLOBALS['conn']->error;
+    }
+  } else {
+    $status['status'] = false;
+    $status['desc'] = 'Invalid merchant Id';
+  }
   return $status;
 }

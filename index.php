@@ -14,8 +14,6 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
   $amount = str_replace('.', '', $amount);
   $data['paymentStatus'] = 'Success';
 
-  print_r($data); die();
-
   $addStatus = addTransactions($data);
 
   // open response page.
