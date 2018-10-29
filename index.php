@@ -15,8 +15,6 @@ if (isset($_POST['pendingRequest']) && !empty($_POST['pendingRequest'])) {
   $data['paymentStatus'] = 'Success';
   $data['errorDesc'] = '';
 
-  print_r($data);
-
   // open response page.
   include('responsePage.php');
 

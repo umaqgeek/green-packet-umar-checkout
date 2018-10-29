@@ -14,3 +14,7 @@ select:invalid {
 label, input[type=checkbox] {
   cursor: pointer;
 }
+
+.total {
+  font-size: 13pt;
+}

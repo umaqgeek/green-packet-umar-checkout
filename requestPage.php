@@ -86,8 +86,8 @@
          <div class="col-sm-10">
            <select class="form-control" name="banks" required>
              <option value="" disabled selected hidden>Issuing bank for the card holder</option>
-             <option value="BIB">Bank Islam</option>
-             <option value="MBB">Maybank</option>
+             <option value="Bank Islam Berhad">Bank Islam</option>
+             <option value="Maybank Berhad">Maybank</option>
            </select>
          </div>
 
