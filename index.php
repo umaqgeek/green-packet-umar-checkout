@@ -11,22 +11,26 @@ $allowedParams = [
 ];
 
 $errStatus = false;
-foreach ($data as $key => $val) {
-  foreach ($allowedParams as $d) {
-    if ($key != $d[0]) {
-      $errStats = true;
-      break;
+if (!empty($data)) {
+  foreach ($data as $key => $val) {
+    foreach ($allowedParams as $d) {
+      if ($key != $d[0]) {
+        $errStats = true;
+        break;
+      }
+      if ($d[1] === true && empty($val)) {
+        $errStats = true;
+        break;
+      }
     }
-    if ($d[1] === true && empty($val)) {
-      $errStats = true;
-      break;
-    }
+    if ($errStats) break;
   }
-  if ($errStats) break;
+} else {
+  $errStats = true;
 }
 
 print_r($data);
-echo $errStats;
+echo "|".$errStats."|";
 die();
 
 unset($_SESSION['errMsg']);
