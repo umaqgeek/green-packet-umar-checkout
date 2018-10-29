@@ -1,5 +1,5 @@
 <?php
-require("./func.php");
+require("func.php");
 // starts session.
 session_start();
 
