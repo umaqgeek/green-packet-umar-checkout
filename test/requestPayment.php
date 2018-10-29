@@ -25,8 +25,6 @@ class RequestPayment extends PHPUnit_Framework_TestCase {
       ]
     ]);
 
-		print_r($response);
-
     $this->assertEquals(200, $response->getStatusCode());
 
     $data = json_decode($response->getBody(), true);
