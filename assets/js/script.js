@@ -17,7 +17,7 @@ function secToTime(seconds) {
   return min + ':' + seconds;
 }
 
-var time = 5;
+var time = 420;
 function timeOut() {
   if (time <= 0) {
     $("#formTimeOut").submit();
