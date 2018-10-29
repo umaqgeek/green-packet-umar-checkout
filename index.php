@@ -4,32 +4,20 @@ session_start();
 $data = $_REQUEST;
 
 $allowedParams = [
-  {
-    name: 'amount',
-    required: true
-  },
-  {
-    name: 'merchantId',
-    required: true
-  },
-  {
-    name: 'reference',
-    required: true
-  },
-  {
-    name: 'remark',
-    required: false
-  }
+  ['amount', true],
+  ['merchantId', true],
+  ['reference', true],
+  ['remark', false]
 ];
 
 $errStatus = false;
 foreach ($data as $key => $val) {
   foreach ($allowedParams as $d) {
-    if ($key != $d->name) {
+    if ($key != $d[0]) {
       $errStats = true;
       break;
     }
-    if ($d->required && empty($val)) {
+    if ($d[1] === true && empty($val)) {
       $errStats = true;
       break;
     }
