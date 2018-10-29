@@ -6,8 +6,7 @@ $data = $_POST;
 $allowedParams = array(
   array('amount', true),
   array('merchantId', true),
-  array('reference', true),
-  array('remark', false)
+  array('reference', true)
 );
 
 $errStats = false;
@@ -21,10 +20,6 @@ if (!empty($data)) {
 } else {
   $errStats = true;
 }
-
-print_r($data);
-echo "|".$errStats."|";
-die();
 
 unset($_SESSION['errMsg']);
 if ($errStats) {
