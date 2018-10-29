@@ -75,7 +75,7 @@ class RequestPayment extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(200, $response->getStatusCode());
 		$response->getBody()->rewind();
     $data = $response->getBody()->getContents();
-		print_r($data);
-		var_dump($data);
+		echo strpos($data, '<h3>Thank you for your business.</h3>');
+		// $this->assertEquals(false, strpos('<h3>Thank you for your business.</h3>', $data));
 	}
 }
