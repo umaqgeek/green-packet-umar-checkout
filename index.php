@@ -26,6 +26,6 @@ if ($errStats) {
   $_SESSION['errMsg'] = $errStats;
 }
 
-header("Location: requestPage.php");
+include('requestPage.php');
 
 ?>
